@@ -6,7 +6,7 @@ Two tutorials of the Utrecht University course NS-MO447M Waves in Geophysical Fl
 
 which you can download here: https://webspace.science.uu.nl/~maas0131/files/drijfhoutmaas07jpo[smallpdf.com].pdf
 
-You will do so using the simple ocean circulation model named “Micom”, written in Fortran, which is the main computer language for nearly all ocean, atmosphere, and climate models.
+You will do so using the simple ocean circulation model named “MICOM” (Miami Isopycnic Coordinate Ocean Model Output), written in Fortran, which is the main computer language for nearly all ocean, atmosphere, and climate models.
 
 This repository holds the model code and files that you can use for analysis. This README also contains the instructions for a small report that forms the fifth assignment of the course
 
@@ -18,20 +18,68 @@ To run the model on your machine, you will first need to compile it. This is cal
 
 <details>
   <summary>Instructions for using the Gemini cluser</summary>
+  These instructions are specific for users on the Gemini cluster.
 
   ### Logging in
   1. Open a Terminal
-  2. Connect to the Gemini cluster by typing `ssh XXXXXXX@gemini.science.uu.nl` using your Solis-ID in place of the XXs
+  2. Connect to the Gemini cluster by typing `ssh 1234567@gemini.science.uu.nl` using your Solis-ID in place of the 1234567
   3. Type your Solis-ID password
-  4. You're in!
+  4. You're in! Your home directory is /nethome/1234567. It has a quotum of 2GB. For temporarily storing large amounts of data, create a scratch folder on the scratch disk: `mkdir /scratch/1234567`.
 
-  ### Downloading files
-  1. You can download the files in this repository by running `git clone
-  
+  ### Executing commands
+  Now you can execute shell commands as usual. Note that Gemini is a cluster, which means that you are sharing resources with other users. When executing small jobs (e.g. copying files, running small scripts, building the model), you can do so as usual. **However, when running larger jubs such as running the model, you should make use of the queueing system.** This way, you're getting adequate computational resources for your _job_, and by using a queue, you won't be hogging resources from other users. 
+
   ### Submitting a job
+  1. To tell the queueing system what your _job_ is comprised of, you should first create a job script, e.g. `my_job.sh`. The `sh` command indicates that this is a shell script. An exmaple shell script looks as follows
+  ```bash
+  #/bin/bash
+
+  # SGE: the job name
+  #$ -N wgf_model
+  # SGE: this flag exports all active environment variables to the job
+  #$ -V
+  # SGE: time limit and queue. Don't change this
+  #$ -l h_rt=24:00:00 
+  #$ -q all.q
+  # SGE: your Email here, for job notification
+  #$ -M my.student.email@uu.nl
+  # SGE: when do you want to be notified (b : begin, e : end, s : error)?
+  #$ -m e 
+  #$ -m s
+  # SGE: ouput in the current working dir
+  #$ -wd /scratch/1234567/wgf_model/
+
+  # Navigate to the right directory and run the model
+  cd /scratch/1234567/wgf_model/
+  ./micom1.x
   
+  ```
+  Note that each computational node has its own `/scratch/`-disk. This means you may have to copy files between nodes. The default node is `science-bs35`. The other node for regular, scheduled jobs is `science-bs37`. You can switch to this node by typing `ssh science-bs37`, and exit it again by typing `exit`.
+
+  2. Submit the job using `qsub /path/to/my_job.sh`
+  3. You can inspect the job status using `qstat`
+  4. If you need to delete the job, check the id using `qstat` and use `qdel 123` with 123 being the job id.
+
+  ### Running Jupyterlab on the cluster
+  You can use Jupyter Lab on the cluster. This allows you to easily analyze the model output. 
+  1. To do so, you must first load _Conda_: `module load miniconda/3`. You may need to open another `bash`-shell: type `bash`. You can tell that Conda is loaded when `(base)` is being shown in front of the interpreter.
+  2. Start Jupyter: `jupyter lab --no-browser`
+  3. Take note of the jupyter portnumber that has been assigned (the four digits in the X's in http://127.0.0.1:XXXX) and the token (the long string after token=).
+  4. Open a new terminal window or tab on your local computer. In this terminal we set up an SSH tunnels.
+  5. Pick a random number YYYY between 8000 and 9000. This will be our SSH port number for the tunnel. Try another number if something fails.
+  6. On your local machine, type `ssh -A -L YYYY:localhost:XXXX 1234567@gemini.science.uu.nl`
+  7. Open a browser on your local computer and go to `localhost:YYYY`, where `YYYY` is your chosen portnumber. When asked for a password/token, use the one that you noted in step 2.
+
+More info can be found here: https://github.com/OceanParcels/UtrechtTeam/wiki/How-to-run-parcels-on-lorenz,-gemini-and-cartesius#gemini
+
 </details>
 
+
+
+
+1. You can download the files in this repository by running `git clone https://github.com/daanreijnders/trapping_internal_tides.git`
+1. Navigate to the `model` directory: `cd trapping_internal_tides/model/`
+1. Build the model with the `make` command
 
 On you workstation you have access to a series of files:
 

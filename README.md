@@ -156,6 +156,7 @@ Note that you may need to recompile the program using `make`.
 In practical 2 we ask you to configure at least 1 of the 3 other set-ups discussed in Drijfhout and Maas (2007) (if you have already done so in practical 1 we ask you to choose a second one), and at least 1 configuration that was **NOT** discussed in Drijfhout and Maas (2007). You may think of the following options: 
 
 - What happens when you change the forcing frequency? Are the results invariant for this parameter? And what happens if you add the new and old frequency in the forcing? How linear is the response?
+  You can change the forcing frequency in `boundpb.f` and `boundvb.f` on line 30 (`sin(tsec*2.*pi/(12.*3600.))`).
 - What happens if you choose steeper or less steep bottom profiles in the cross-channel direction? What happens if you add random small-scale perturbations to the bottom?
 - What happens if you turn the channel, or to make it easy, make <img src="https://render.githubusercontent.com/render/math?math={f}"> a variable function of *x*?
 - What happens if you make <img src="https://render.githubusercontent.com/render/math?math={N}"> stronger or weaker or no longer a constant but a function of *z*?

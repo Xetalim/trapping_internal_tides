@@ -18,6 +18,7 @@ To run the model on your machine, you will first need to compile it. This is cal
 
 <details>
   <summary>⚠️ Instructions for using the Gemini cluster</summary>
+  
   ### Logging in
   1. Open a Terminal
   2. Connect to the Gemini cluster by typing `ssh 1234567@gemini.science.uu.nl` using your Solis-ID in place of the 1234567

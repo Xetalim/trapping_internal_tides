@@ -101,7 +101,7 @@ You will find the following files in the model directory:
 - `*.f` files. These are the source codes for the model. The main code is `micom-ssd.f`, and the other files serve as subroutines.
 - `makefile` that contains instructions for the compiler
 - `*.o` files that are created after compiling the code with the makefile
-- `micom1.x` file created after compiling the code with the makefile. This is executable for running the model
+- `micom1.x` file created after compiling the code with the makefile. This is the executable for running the model
 - `*.h` (3x) files where some variables are defined common to various subroutines and the main part
 - `micom.in` file setting a few free parameters.
 - `thetas` file describing the densities of the 43 layers.

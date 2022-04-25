@@ -164,4 +164,4 @@ Again we ask you:
 - To motivate your choice of figures (choose 2-4) for each of the 2 runs with 1 parameter changed.
 - What is the story you want to tell (see bullet 1) and what are your main conclusions?
 
-The deadline for this assignment is *May 31st, 2022*.
+The deadline for this assignment is **May 31st, 2022**.

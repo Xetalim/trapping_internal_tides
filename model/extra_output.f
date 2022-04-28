@@ -22,7 +22,7 @@ c
       write (time_str, '(i5.5)') NINT (16*time-16*12)
       endif
 
-      flnm(:8) = 'analyse_:'
+      flnm(:8) = 'analysis_:'
       flnm(9:13)=time_str
       open (unit = 99, file = flnm(:13), form = 'unformatted')
 !! 3D velden:

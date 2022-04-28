@@ -8,13 +8,13 @@ Two tutorials of the Utrecht University course NS-MO447M Waves in Geophysical Fl
 
 You will do so using the simple ocean circulation model named “MICOM” (Miami Isopycnic Coordinate Ocean Model Output), written in Fortran, which is the main computer language for nearly all ocean, atmosphere, and climate models.
 
-This repository holds the model code and files that you can use for analysis. This README also contains the instructions for a small report that forms the fifth assignment of the course
+This repository holds the model code and files that you can use for analysis. This README also contains the instructions for a small report that forms the fifth assignment of the course.
 
 
 
 ## Model description
 
-The model is configured as a channel with an open boundary at one, oceanward side, and a continental slope at the opposite side. The length of the channel is 1200km, the width 191.25 km. There are 43 layers of 100-m depth, so that total depth in the middle of the channel is 4300 m. 
+The model is configured as a channel with an open boundary at one, oceanward side, and a continental slope at the opposite side. The length of the channel is 1200 km, the width 191.25 km. There are 43 layers of 100-m depth, so that total depth in the middle of the channel is 4300 m. 
 
 A barotropic tidal wave, having a typical period of 12 h, enters the channel from the open boundary. Over the continental slope its mainly horizontally-moving barotropic tidal current aquires a vertical component, as the flow is forced to follow the bottom. This vertical velocity displaces isopycnals up and downward out-of-equilibrium. The gravitational restoring force subsequently generates outward-propagating internal tides. 
 
@@ -40,7 +40,7 @@ To run the model on your machine, you will first need to compile it. This is als
   4. You're in! Your home directory is `/nethome/1234567`. It has a quotum of 2GB. For temporarily storing large amounts of data, create a scratch folder on the scratch disk: `mkdir /scratch/1234567`. Gemini consists of several computing nodes. Each node has its own `scratch` disk.  This means you may have to copy files between nodes. The default (login) node is `science-bs35`. The other node for regular, scheduled jobs is `science-bs37`. You can switch to this node by typing `ssh science-bs37`, and exit it again by typing `exit`. 
 
   ### Executing commands
-Now you can execute shell commands as usual. Note that Gemini is a cluster, which means that you are sharing resources with other users. When executing small jobs (e.g. copying files, running small scripts, building the model), you can do so as usual. **However, when running larger jubs such as running the model, you should make use of the queueing system.** This way, you're getting adequate computational resources for your _job_, and by using a queue, you won't be hogging resources from other users. 
+Now you can execute shell commands as usual. Note that Gemini is a cluster, which means that you are sharing resources with other users. When executing small jobs (e.g. copying files, running small scripts, building the model), you can do so as usual. **However, when running larger jubs, such as running the model, you should make use of the queueing system.** This way, you're getting adequate computational resources for your _job_, and by using a queue, you won't be hogging resources from other users. 
 
   ### Submitting a job to the queue
   1. To tell the queueing system what your _job_ is comprised of, you should first create a *job script*, e.g. `my_job.sh`. The `sh` extension indicates that this is a shell script. An example job script looks as follows
@@ -71,7 +71,7 @@ Now you can execute shell commands as usual. Note that Gemini is a cluster, whic
   3. You can inspect the job status using `qstat.`
   4. If you need to delete the job, check the id using `qstat` and use `qdel 123` with 123 being the job id.
 
-  ### Running Jupyterlab on the cluster
+  ### Running Jupyter Lab on the cluster
   You can use Jupyter Lab on the cluster. This allows you to easily analyze the model output. 
   1. To do so, you must first load _Conda_: `module load miniconda/3`. Initialize Conda by typing `conda init bash`. You may need to open another bash-shell: type `bash`. You can tell that Conda is loaded when `(base)` is being shown in front of the interpreter.
   2. Start Jupyter: `jupyter lab --no-browser.`
@@ -89,8 +89,8 @@ More info can be found here: https://github.com/OceanParcels/UtrechtTeam/wiki/Ho
 
 
 1. You can download the files in this repository by running `git clone https://github.com/daanreijnders/trapping_internal_tides.git`
-1. Navigate to the `model` directory: `cd trapping_internal_tides/model/`
-1. Build the model with the `make` command
+2. Navigate to the `model` directory: `cd trapping_internal_tides/model/`
+3. Build the model with the `make` command
 
 
 
@@ -101,7 +101,7 @@ You will find the following files in the model directory:
 - `*.f` files. These are the source codes for the model. The main code is `micom-ssd.f`, and the other files serve as subroutines.
 - `makefile` that contains instructions for the compiler
 - `*.o` files that are created after compiling the code with the makefile
-- `micom1.x` file created after compiling the code with the makefile. This is executable for running the model
+- `micom1.x` file created after compiling the code with the makefile. This is the executable for running the model
 - `*.h` (3x) files where some variables are defined common to various subroutines and the main part
 - `micom.in` file setting a few free parameters.
 - `thetas` file describing the densities of the 43 layers.
@@ -110,21 +110,19 @@ You will find the following files in the model directory:
 
 ## Running the model
 
-With the command `./micom1.x`the model starts running. **If you are working on the cluster, do not execute this command directly from the shell. Instead, use the queue system. See the information at *⚠️ Instructions for using the Gemini cluster* above.
+With the command `./micom1.x`, the model starts running. **If you are working on the cluster, do not execute this command directly from the shell. Instead, use the queue system. See the information at *⚠️ Instructions for using the Gemini cluster* above.
 
 Three types of output files will be created;
 
 - 16 `analyse_****` files
-
 - 3 `average_****` files
-
 - 1 `restart_****` file
 
  The MICOM model is a so-called isopycnic model. It consists of layers with constant density but the depth of the interface between the layers is variable (in contrast to so-called constant z-models, where the density of layers is variable, but their interfaces are fixed in time).
 
-- The analyse-files output the time varying depth of the 43 interfaces at 16 moments in time during the last day (1.5 hour output). This is enough to resolve the dominant frequency of internal waves forced by an external wave with fixed frequency of 12 hrs.
-- The average-files describe the 1-day average of the model-state. You only need the last day.
-- The restart-file is needed when you want to prolong your run
+- The `analyse`-files output the time varying depth of the 43 interfaces at 16 moments in time during the last day (1.5 hour output). This is enough to resolve the dominant frequency of internal waves forced by an external wave with fixed frequency of 12 hrs.
+- The `average`-files describe the 1-day average of the model-state. You only need the last day.
+- The `restart`-file is needed when you want to prolong your run
 
 
 
@@ -136,15 +134,14 @@ In the analysis folder, you will find a `micom_tools.py` file, that contains a s
 
 ## Assignment
 
-In the first practical you will try to recover some of the figures in Drijfhout and Maas (2007) and possibly other figures from the same 4 runs. We ask you to
+In the first tutorial you will try to recover some of the figures in Drijfhout and Maas (2007) and possibly other figures from the same 4 runs. We ask you to
 
 - Motivate your choice of figures (choose 6-8).
-
 - Explain why you must adapt <img src="https://render.githubusercontent.com/render/math?math={N}"> and total runtime when <img src="https://render.githubusercontent.com/render/math?math={f}"> changes
-- Why you see trapping of internal waves in the present set-up and not in other set-ups (different <img src="https://render.githubusercontent.com/render/math?math={f}"> values and bottom profiles)
+- Why do you see trapping of internal waves in the present set-up and not in other set-ups (different <img src="https://render.githubusercontent.com/render/math?math={f}"> values and bottom profiles)?
 - What is the story you want to tell (see the first bullet) and what are your main conclusions?
 
- In practical 1 you do not need to change the set-up (but you may and can win extra brownie points if you do). In practical 2 you will have to change the set-up. Here are the places you will have to make changes in the code (although the code is in fortran the required changes are so simple that you can make them without detailed understanding of the code).
+ In tutorial 1 you do not need to change the set-up (but you may and can win extra brownie points if you do). In tutorial 2 you will have to change the set-up. Here are the places you will have to make changes in the code (although the code is in Fortran, the required changes are so simple that you can make them without detailed understanding of the code).
 
 - To change the bottom profile, in `cyclo.f` you must edit `pmer` (line 57) and `poos` (line 49) to define the bottom profile in respectively length and width.
 - To change <img src="https://render.githubusercontent.com/render/math?math={f}"> you must edit `geopar.f` (line 22-23)
@@ -153,7 +150,7 @@ In the first practical you will try to recover some of the figures in Drijfhout 
 
 Note that you may need to recompile the program using `make`.
 
-In practical 2 we ask you to configure at least 1 of the 3 other set-ups discussed in Drijfhout and Maas (2007) (if you have already done so in practical 1 we ask you to choose a second one), and at least 1 configuration that was **NOT** discussed in Drijfhout and Maas (2007). You may think of the following options: 
+In tutorial 2 we ask you to configure at least 1 of the 3 other set-ups discussed in Drijfhout and Maas (2007) (if you have already done so in practical 1 we ask you to choose a second one), and at least 1 configuration that was **NOT** discussed in Drijfhout and Maas (2007). You may think of the following options: 
 
 - What happens when you change the forcing frequency? Are the results invariant for this parameter? And what happens if you add the new and old frequency in the forcing? How linear is the response?
   You can change the forcing frequency in `boundpb.f` and `boundvb.f` on line 30 (`sin(tsec*2.*pi/(12.*3600.))`).
@@ -165,5 +162,6 @@ In practical 2 we ask you to configure at least 1 of the 3 other set-ups discuss
 Again we ask you:
 
 - To motivate your choice of figures (choose 2-4) for each of the 2 runs with 1 parameter changed.
-
 - What is the story you want to tell (see bullet 1) and what are your main conclusions?
+
+The deadline for this assignment is **May 31st, 2022**.

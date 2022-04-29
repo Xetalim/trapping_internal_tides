@@ -116,7 +116,6 @@ class micom_tools:
         n = analyses.time.size
         dt = analyses.time[1] - analyses.time[0] # should be in hours
         anomalies = (analyses - average) / self.scalingcm
-        # Why do we take this cumulative sum?
         acum = np.cumsum(anomalies, axis=1)
         mean = acum.mean('time')
         sumsq = (acum**2).sum('time')
@@ -127,9 +126,8 @@ class micom_tools:
             # Here we generalize the computation to work with any dt
             C += (acum[l, :, :, :] - mean) * np.cos((l+1)*np.pi / (24/dt/4))
             S += (acum[l, :, :, :] - mean) * np.sin((l+1)*np.pi / (24/dt/4))
-        # In the code, the division is by 8. Why? I think this should be a division by n, to get a mean
-        C = C / 8
-        S = S / 8
+        C = C / (n/2)
+        S = S / (n/2)
         for l in range(0, n):
             residual += (mean + C * np.cos((l+1) * np.pi/4) + S * np.sin((l+1) * np.pi/4) - acum[l, :, :, :])**2
         residual = (residual/sumsq).drop('time')

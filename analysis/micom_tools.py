@@ -91,7 +91,7 @@ class micom_tools:
         dt : int, float
             timestep between files in hours
         """
-        ds = xr.concat([self.read_output(f, returntype='xarray') for f in ds_list], dim='time')
+        ds = xr.concat(ds_list, dim='time')
         n_time = ds.time.size
         ds = ds.assign_coords(time=np.arange(0, n_time*dt, dt))
         ds['time'].attrs = {"long_name" : "time referenced to 0",

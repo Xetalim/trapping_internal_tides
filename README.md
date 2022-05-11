@@ -110,7 +110,7 @@ You will find the following files in the model directory:
 
 ## Running the model
 
-With the command `./micom1.x`, the model starts running. **If you are working on the cluster, do not execute this command directly from the shell. Instead, use the queue system. See the information at *⚠️ Instructions for using the Gemini cluster* above.
+With the command `./micom1.x`, the model starts running. **If you are working on the cluster, do not execute this command directly from the shell. Instead, use the queue system** See the information at *⚠️ Instructions for using the Gemini cluster* above.
 
 Three types of output files will be created;
 

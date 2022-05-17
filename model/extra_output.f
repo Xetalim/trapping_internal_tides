@@ -24,7 +24,7 @@ c
 
       flnm(:9) = 'analysis_:'
       flnm(10:14)=time_str
-      open (unit = 99, file = flnm(:13), form = 'unformatted')
+      open (unit = 99, file = flnm(:14), form = 'unformatted')
 !! 3D velden:
          write (99) dp5
       close (99)

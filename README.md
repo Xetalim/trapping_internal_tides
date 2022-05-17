@@ -115,7 +115,7 @@ With the command `./micom1.x`, the model starts running. **If you are working on
 Three types of output files will be created;
 
 - 16 `analyse_****` files
-- 3 `average_****` files
+- 2 `average_****` files
 - 1 `restart_****` file
 
  The MICOM model is a so-called isopycnic model. It consists of layers with constant density but the depth of the interface between the layers is variable (in contrast to so-called constant z-models, where the density of layers is variable, but their interfaces are fixed in time).

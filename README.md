@@ -128,7 +128,7 @@ Three types of output files will be created;
 
 ## Reading and analyzing the model output
 
-In the analysis folder, you will find a `micom_tools.py` file, that contains a simple Python class with a couple of methods to read in the data and to compute the amplitude and phase of the dominant internal wave. Amplitudes are already divided by 980.6 to convert them to meters (<img src="https://render.githubusercontent.com/render/math?math={g = 9.806 \ \rm{m/s^2}}"> is the gravitational acceleration); the phase is defined between <img src="https://render.githubusercontent.com/render/math?math={-\pi}"> and <img src="https://render.githubusercontent.com/render/math?math={\pi}">. The `tutorial_micom_tools.ipynb` notebook will guide you through the functionality of the tool. Make sure to have Numpy, Matplotlib and Xarray installed.
+In the analysis folder, you will find a `micom_tools.py` file, that contains a simple Python class with a couple of methods to read in the data and to compute the amplitude and phase of the dominant internal wave. Amplitudes are already divided by 980.6 to convert them to centimeters (<img src="https://render.githubusercontent.com/render/math?math={g = 9.806 \ \rm{m/s^2}}"> is the gravitational acceleration); the phase is defined between <img src="https://render.githubusercontent.com/render/math?math={-\pi}"> and <img src="https://render.githubusercontent.com/render/math?math={\pi}">. The `tutorial_micom_tools.ipynb` notebook will guide you through the functionality of the tool. Make sure to have Numpy, Matplotlib and Xarray installed.
 
 
 

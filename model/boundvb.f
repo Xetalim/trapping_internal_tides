@@ -26,8 +26,8 @@ c
       do i=1,ii-1
        alfa=((14.-j)/13.)**2
        z(i,j)=z(i,j)*(1.-alfa)+alfa*
-     .100.*sin(tsec*2.*pi/(12.*3600.))
-     .*(1.-1.*exp(-float(itime)/240.))
+     &.1*sin(tsec*2.*pi/(12.*3600.))
+     &*(1.-1.*exp(-float(itime)/240.))
       enddo
       enddo
 

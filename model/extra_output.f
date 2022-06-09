@@ -3,7 +3,7 @@ c
       include 'dimensions.h'
       include 'common_blocks.h'
 c
-      character flnm*13, time_str*5
+      character flnm*14, time_str*5
 
 ! schrijf weg:
       if(time.gt.4..and.time.le.5.) then
@@ -22,9 +22,9 @@ c
       write (time_str, '(i5.5)') NINT (16*time-16*12)
       endif
 
-      flnm(:8) = 'analysis_:'
-      flnm(9:13)=time_str
-      open (unit = 99, file = flnm(:13), form = 'unformatted')
+      flnm(:9) = 'analysis_:'
+      flnm(10:14)=time_str
+      open (unit = 99, file = flnm(:14), form = 'unformatted')
 !! 3D velden:
          write (99) dp5
       close (99)

@@ -28,7 +28,7 @@ The model files in this repository are configured for the case <img src="https:/
 
 You are used to working with Python, which is an interpreted programming language. This means that your instructions are not immediately understood by your computer, but are interpreted and translated to machine code on-the-fly as you execute a script. In contrast, Fortran is a compiled programming language. Before you run a program, your entire code needs to be translated to machine code first. This extra step allows your code to run incredibly efficiently whenever it is executed.
 
-To run the model on your machine, you will first need to compile it. This is also called *building* the model. The model should be able to build on MacOS and Linux with the Fortran compiler *gfortran* (part of the *GCC* compiler collection) installed. We have also tested the model on Gemini, the Science department’s computer cluster. If you are using MacOS, you can install _gfortran_ as part of _GCC_ using the package manager _[Homebrew](https://brew.sh)_ (after installing Homebrew, use `brew install gcc`). If you are unable to build the model on your own computer, feel free to use the Gemini cluster. In that case, make sure to read the specific instructions below.
+To run the model on your machine, you will first need to compile it. This is also called *building* the model. The model should be able to build on **MacOS** and **Linux** with the Fortran compiler *gfortran* (part of the *GCC* compiler collection) installed. We have also tested the model on Gemini, the Science department’s computer cluster. If you are using MacOS, you may first need to install the Command Line Tools using `xcode-select --install`. Then, you can install _gfortran_ as part of _GCC_ using the package manager _[Homebrew](https://brew.sh)_ (after installing Homebrew, use `brew install gcc`). If you use **Windows**, you may install **Linux within Windows** (see [these instructions](https://docs.microsoft.com/en-us/windows/wsl/about)). If you are unable to build the model on your own computer, feel free to use the Gemini cluster. In that case, make sure to read the specific instructions below.
 
 <details>
   <summary>⚠️ **Instructions for using the Gemini cluster [Click me]**</summary>
@@ -115,7 +115,7 @@ With the command `./micom1.x`, the model starts running. **If you are working on
 Three types of output files will be created;
 
 - 16 `analyse_****` files
-- 3 `average_****` files
+- 2 `average_****` files
 - 1 `restart_****` file
 
  The MICOM model is a so-called isopycnic model. It consists of layers with constant density but the depth of the interface between the layers is variable (in contrast to so-called constant z-models, where the density of layers is variable, but their interfaces are fixed in time).
@@ -128,7 +128,7 @@ Three types of output files will be created;
 
 ## Reading and analyzing the model output
 
-In the analysis folder, you will find a `micom_tools.py` file, that contains a simple Python class with a couple of methods to read in the data and to compute the amplitude and phase of the dominant internal wave. Amplitudes are already divided by 980.6 to convert them to meters (<img src="https://render.githubusercontent.com/render/math?math={g = 9.806 \ \rm{m/s^2}}"> is the gravitational acceleration); the phase is defined between <img src="https://render.githubusercontent.com/render/math?math={-\pi}"> and <img src="https://render.githubusercontent.com/render/math?math={\pi}">. The `tutorial_micom_tools.ipynb` notebook will guide you through the functionality of the tool. Make sure to have Numpy, Matplotlib and Xarray installed.
+In the analysis folder, you will find a `micom_tools.py` file, that contains a simple Python class with a couple of methods to read in the data and to compute the amplitude and phase of the dominant internal wave. Amplitudes are already divided by 980.6 to convert them to centimeters (<img src="https://render.githubusercontent.com/render/math?math={g = 9.806 \ \rm{m/s^2}}"> is the gravitational acceleration); the phase is defined between <img src="https://render.githubusercontent.com/render/math?math={-\pi}"> and <img src="https://render.githubusercontent.com/render/math?math={\pi}">. The `tutorial_micom_tools.ipynb` notebook will guide you through the functionality of the tool. Make sure to have Numpy, Matplotlib and Xarray installed.
 
 
 

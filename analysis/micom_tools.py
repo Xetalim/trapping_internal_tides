@@ -29,7 +29,7 @@ class micom_tools:
         self.dz = self.D / self.k1
         
         # Arrays with lengths
-        self.C = np.arange(self.jdd) * self.dx + self.dx/2
+        self.xc = np.arange(self.jdd) * self.dx + self.dx/2
         self.yc = np.arange(self.idd) * self.dy + self.dy/2
         self.zc = np.arange(self.k1) * self.dz + self.dz/2
         
@@ -67,7 +67,7 @@ class micom_tools:
             return output
         elif returntype == 'xarray':
             output = xr.DataArray(data = output, 
-                                  coords = [self.zc, self.C, self.yc],
+                                  coords = [self.zc, self.xc, self.yc],
                                   dims = ['Z', 'X', 'Y'])
             output['X'].attrs = {"long_name" : "X-coordinate of the cell center",
                                  "unit" : "kilometers"}
@@ -131,7 +131,7 @@ class micom_tools:
         for l in range(0, n):
             residual += (mean + C * np.cos((l+1) * np.pi/4) + S * np.sin((l+1) * np.pi/4) - acum[l, :, :, :])**2
         residual = (residual/sumsq).drop('time')
-        amplitude = (np.sqrt(C**2 + S**2)).drop('time') / self.scalingcm
+        amplitude = (np.sqrt(C**2 + S**2)).drop('time')
         phase = (np.arctan2(S, C)).drop('time')
         
         residual.name = 'Residual [cm]'

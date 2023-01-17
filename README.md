@@ -56,7 +56,7 @@ More info can be found here: https://github.com/OceanParcels/UtrechtTeam/wiki/Ho
 
 
 
-1. You can download the files in this repository by running `git clone https://github.com/daanreijnders/trapping_internal_tides.git`
+1. You can download the files in this repository by first navigating to the directory where you want to store them (`cd /destination/path`) and running `git clone https://github.com/daanreijnders/trapping_internal_tides.git`
 2. Navigate to the `model` directory: `cd trapping_internal_tides/model/`
 3. Build the model with the `make` command
 

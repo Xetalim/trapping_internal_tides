@@ -37,39 +37,7 @@ To run the model on your machine, you will first need to compile it. This is als
   1. Open a Terminal.
   2. Connect to the Gemini cluster by typing `ssh 1234567@gemini.science.uu.nl` using your Solis-ID in place of 1234567.
   3. Type your Solis-ID password.
-  4. You're in! Your home directory is `/nethome/1234567`. It has a quotum of 2GB. For temporarily storing large amounts of data, create a scratch folder on the scratch disk: `mkdir /scratch/1234567`. Gemini consists of several computing nodes. Each node has its own `scratch` disk.  This means you may have to copy files between nodes. The default (login) node is `science-bs35`. The other node for regular, scheduled jobs is `science-bs37`. You can switch to this node by typing `ssh science-bs37`, and exit it again by typing `exit`. 
-
-  ### Executing commands
-Now you can execute shell commands as usual. Note that Gemini is a cluster, which means that you are sharing resources with other users. When executing small jobs (e.g. copying files, running small scripts, building the model), you can do so as usual. **However, when running larger jubs, such as running the model, you should make use of the queueing system.** This way, you're getting adequate computational resources for your _job_, and by using a queue, you won't be hogging resources from other users. 
-
-  ### Submitting a job to the queue
-  1. To tell the queueing system what your _job_ is comprised of, you should first create a *job script*, e.g. `my_job.sh`. The `sh` extension indicates that this is a shell script. An example job script looks as follows
-  ```bash
-  #/bin/bash
-
-  # SGE: Set the job name
-  #$ -N wgf_model
-  # SGE: this flag exports all active environment variables to the job
-  #$ -V
-  # SGE: time limit and queue. You probably don't need to change this
-  #$ -l h_rt=2:00:00 
-  #$ -q all.q
-  # SGE: your Email here, for job notification
-  #$ -M my.student.email@uu.nl
-  # SGE: when do you want to be notified (b : begin, e : end, s : error)?
-  #$ -m e 
-  #$ -m s
-  # SGE: ouput in the current working dir
-  #$ -wd /scratch/1234567/wgf_model/
-
-  # Navigate to the right directory and run the model
-  cd /scratch/1234567/wgf_model/ # Navigate to where the model is stored
-  ./micom1.x # This line starts the model execution
-  
-  ```
-  2. Submit the job using `qsub /path/to/my_job.sh`.
-  3. You can inspect the job status using `qstat.`
-  4. If you need to delete the job, check the id using `qstat` and use `qdel 123` with 123 being the job id.
+  4. You're in! Your home directory is `/nethome/1234567`. It has a quotum of 2GB. If you need to temporarily store large amounts of data, create a personal scratch folder on the scratch disk: `mkdir /scratch/1234567`. Please do not store data on scratch folders for longer than 2 weeks.
 
   ### Running Jupyter Lab on the cluster
   You can use Jupyter Lab on the cluster. This allows you to easily analyze the model output. 
@@ -110,7 +78,7 @@ You will find the following files in the model directory:
 
 ## Running the model
 
-With the command `./micom1.x`, the model starts running. **If you are working on the cluster, do not execute this command directly from the shell. Instead, use the queue system** See the information at *⚠️ Instructions for using the Gemini cluster* above.
+With the command `./micom1.x`, the model starts running.
 
 Three types of output files will be created;
 

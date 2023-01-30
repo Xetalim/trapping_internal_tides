@@ -126,7 +126,7 @@ In tutorial 2 we ask you to configure at least 1 of the 3 other set-ups discusse
 - What happens if you turn the channel, or to make it easy, make <img src="https://render.githubusercontent.com/render/math?math={f}"> a variable function of *x*?
 - What happens if you make <img src="https://render.githubusercontent.com/render/math?math={N}"> stronger or weaker or no longer a constant but a function of *z*?
 - Maybe you want to change another parameter. Which one would you choose (try to argue, even if you have no time to do this)?
-- In our examples <img src="https://render.githubusercontent.com/render/math?math={N \geq f}">. What happens if <img src="https://render.githubusercontent.com/render/math?math={f \geq 10 \times N}">? Can you design such a combination that keeps tau unchanged? What happens if you apply this combination of <img src="https://render.githubusercontent.com/render/math?math={f}"> and <img src="https://render.githubusercontent.com/render/math?math={N}">? Note that changing <img src="https://render.githubusercontent.com/render/math?math={N}"> implies changing theta.
+- In our examples <img src="https://render.githubusercontent.com/render/math?math={N \geq f}">. What happens if <img src="https://render.githubusercontent.com/render/math?math={f \eq 10 * N}">? Can you design such a combination that keeps tau unchanged? What happens if you apply this combination of <img src="https://render.githubusercontent.com/render/math?math={f}"> and <img src="https://render.githubusercontent.com/render/math?math={N}">? Note that changing <img src="https://render.githubusercontent.com/render/math?math={N}"> implies changing theta.
 
 Again we ask you:
 

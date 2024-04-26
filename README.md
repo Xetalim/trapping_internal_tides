@@ -18,11 +18,11 @@ The model is configured as a channel with an open boundary at one, oceanward sid
 
 A barotropic tidal wave, having a typical period of 12 h, enters the channel from the open boundary. Over the continental slope its mainly horizontally-moving barotropic tidal current aquires a vertical component, as the flow is forced to follow the bottom. This vertical velocity displaces isopycnals up and downward out-of-equilibrium. The gravitational restoring force subsequently generates outward-propagating internal tides. 
 
-The paper discusses 4 experiments. In two experiments the earth’s rotation is neglected and the Coriolis frequency is set to 0. In the other two experiments we use an $f$ plane with $f=10^{-4}\rm{s}^{-1}$. Both cases are run with two channel configurations: in one case the channel has a flat bottom and vertical walls in the cross-channel direction; in the other case the channel has a parabolic cross-channel bottom profile with maximum depth of 4300 m and sloping sidewalls. When $f=0$ the buoyancy frequency is chosen as <img src="https://render.githubusercontent.com/render/math?math={N = 3.05 \times 10^{-3}\ \rm{s}^{-1}}">. When <img src="https://render.githubusercontent.com/render/math?math={f = 10^{-4}\ \rm{s}^{-1}}">,  <img src="https://render.githubusercontent.com/render/math?math={N= 2.2 \times 10^{-3}\ \rm{s}^{-1}}">. 
+The paper discusses 4 experiments. In two experiments the earth’s rotation is neglected and the Coriolis frequency is set to 0. In the other two experiments we use an $f$ plane with $f = 10^{-4} \rm{s}^{-1}$. Both cases are run with two channel configurations: in one case the channel has a flat bottom and vertical walls in the cross-channel direction; in the other case the channel has a parabolic cross-channel bottom profile with maximum depth of 4300 m and sloping sidewalls. When $f=0$ the buoyancy frequency is chosen as $N = 3.05 \times 10^{-3}\ \rm{s}^{-1}$. When $f = 10^{-4}\ \rm{s}^{-1}$,  $N= 2.2 \times 10^{-3}\ \rm{s}^{-1}$. 
 
-The model files in this repository are configured for the case <img src="https://render.githubusercontent.com/render/math?math={f = 10^{-4}\ \rm{s}^{-1}}">, <img src="https://render.githubusercontent.com/render/math?math={N = 2.2 \times 10^{-3}\ \rm{s}^{-1}}">. 
+The model files in this repository are configured for the case $f = 10^{-4}\ \rm{s}^{-1}$, $N = 2.2 \times 10^{-3}\ \rm{s}^{-1}$. 
 
-Try to find/remember what the nondimensional parameter tau must be for trapping. Is tau the same for the two combinations of <img src="https://render.githubusercontent.com/render/math?math={f}"> and <img src="https://render.githubusercontent.com/render/math?math={N}"> described above?
+Try to find/remember what the nondimensional parameter tau must be for trapping. Is tau the same for the two combinations of $f$ and $N$ described above?
 
 ##  Downloading and building the model
 
@@ -96,7 +96,7 @@ Three types of output files will be created;
 
 ## Reading and analyzing the model output
 
-In the analysis folder, you will find a `micom_tools.py` file, that contains a simple Python class with a couple of methods to read in the data and to compute the amplitude and phase of the dominant internal wave. Amplitudes are already divided by 980.6 to convert them to centimeters (<img src="https://render.githubusercontent.com/render/math?math={g = 9.806 \ \rm{m/s^2}}"> is the gravitational acceleration); the phase is defined between <img src="https://render.githubusercontent.com/render/math?math={-\pi}"> and <img src="https://render.githubusercontent.com/render/math?math={\pi}">. The `tutorial_micom_tools.ipynb` notebook will guide you through the functionality of the tool. Make sure to have Numpy, Matplotlib and Xarray installed.
+In the analysis folder, you will find a `micom_tools.py` file, that contains a simple Python class with a couple of methods to read in the data and to compute the amplitude and phase of the dominant internal wave. Amplitudes are already divided by 980.6 to convert them to centimeters ($g = 9.806 \ \rm{m/s^2}$ is the gravitational acceleration); the phase is defined between $-\pi$ and $\pi$. The `tutorial_micom_tools.ipynb` notebook will guide you through the functionality of the tool. Make sure to have Numpy, Matplotlib and Xarray installed.
 
 
 
@@ -105,15 +105,15 @@ In the analysis folder, you will find a `micom_tools.py` file, that contains a s
 In the first tutorial you will try to recover some of the figures in Drijfhout and Maas (2007) and possibly other figures from the same 4 runs. We ask you to
 
 - Motivate your choice of figures (choose 6-8).
-- Explain why you must adapt <img src="https://render.githubusercontent.com/render/math?math={N}"> and total runtime when <img src="https://render.githubusercontent.com/render/math?math={f}"> changes
-- Why do you see trapping of internal waves in the present set-up and not in other set-ups (different <img src="https://render.githubusercontent.com/render/math?math={f}"> values and bottom profiles)?
+- Explain why you must adapt $N$ and total runtime when $f$ changes
+- Why do you see trapping of internal waves in the present set-up and not in other set-ups (different $f$ values and bottom profiles)?
 - What is the story you want to tell (see the first bullet) and what are your main conclusions?
 
  In tutorial 1 you do not need to change the set-up (but you may and can win extra brownie points if you do). In tutorial 2 you will have to change the set-up. Here are the places you will have to make changes in the code (although the code is in Fortran, the required changes are so simple that you can make them without detailed understanding of the code).
 
 - To change the bottom profile, in `cyclo.f` you must edit `pmer` (line 57) and `poos` (line 49) to define the bottom profile in respectively length and width.
-- To change <img src="https://render.githubusercontent.com/render/math?math={f}"> you must edit `geopar.f` (line 22-23)
-- To change <img src="https://render.githubusercontent.com/render/math?math={N}"> you must edit `thetas`. The values in thetas represent the potential densities (assuming a linear equation of state, where density solely depends on potential temperature), and are determined as (<img src="https://render.githubusercontent.com/render/math?math={\sigma_0-1000)/1000}">. That means that <img src="https://render.githubusercontent.com/render/math?math={1000*\sigma_0}"> runs from 26.0 till 28.071 <img src="https://render.githubusercontent.com/render/math?math={\rm{kg}/{m}^3}">. 
+- To change $f$ you must edit `geopar.f` (line 22-23)
+- To change $N$ you must edit `thetas`. The values in thetas represent the potential densities (assuming a linear equation of state, where density solely depends on potential temperature), and are determined as ( $\sigma_0-1000)/1000$. That means that $1000*\sigma_0$ runs from 26.0 till 28.071 $\rm{kg}/{m}^3$. 
 - To change the length of the run you must edit `micom.in`. The 5 values are explained in `micom_ssd.f` where `micom.in` is read on line 27. You can search for their names to understand what they steer. The first 2 values refer to `day1` and `day2` and the model runs from `day1` to `day2`.
 
 Note that you may need to recompile the program using `make`.
@@ -124,7 +124,7 @@ In tutorial 2 we ask you to configure at least 1 of the 3 other set-ups discusse
   You can change the forcing frequency in `boundpb.f` and `boundvb.f` on line 30 (`sin(tsec*2.*pi/(12.*3600.))`).
 - What happens if you choose steeper or less steep bottom profiles in the cross-channel direction? What happens if you add random small-scale perturbations to the bottom?
 - What happens if you turn the channel (from an east-west alignment to a north-south alignment), or to make it easy, make <img src="https://render.githubusercontent.com/render/math?math={f}"> a variable function of *x*?
-- What happens if you make <img src="https://render.githubusercontent.com/render/math?math={N}"> stronger or weaker or no longer a constant but a function of *z*?
+- What happens if you make $N$ stronger or weaker or no longer a constant but a function of *z*?
 - Maybe you want to change another parameter. Which one would you choose (try to argue, even if you have no time to do this)?
 - In our examples <img src="https://render.githubusercontent.com/render/math?math={N}"> > <img src="https://render.githubusercontent.com/render/math?math={f}">. What happens if <img src="https://render.githubusercontent.com/render/math?math={f}"> > 10 * <img src="https://render.githubusercontent.com/render/math?math={N}">? Can you design such a combination that keeps tau unchanged? What happens if you apply this combination of <img src="https://render.githubusercontent.com/render/math?math={f}"> and <img src="https://render.githubusercontent.com/render/math?math={N}">? Note that changing <img src="https://render.githubusercontent.com/render/math?math={N}"> implies changing theta.
 

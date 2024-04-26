@@ -123,10 +123,10 @@ In tutorial 2 we ask you to configure at least 1 of the 3 other set-ups discusse
 - What happens when you change the forcing frequency? Are the results invariant for this parameter? And what happens if you add the new and old frequency in the forcing? How linear is the response?
   You can change the forcing frequency in `boundpb.f` and `boundvb.f` on line 30 (`sin(tsec*2.*pi/(12.*3600.))`).
 - What happens if you choose steeper or less steep bottom profiles in the cross-channel direction? What happens if you add random small-scale perturbations to the bottom?
-- What happens if you turn the channel (from an east-west alignment to a north-south alignment), or to make it easy, make <img src="https://render.githubusercontent.com/render/math?math={f}"> a variable function of *x*?
+- What happens if you turn the channel (from an east-west alignment to a north-south alignment), or to make it easy, make $f$ a variable function of *x*?
 - What happens if you make $N$ stronger or weaker or no longer a constant but a function of *z*?
 - Maybe you want to change another parameter. Which one would you choose (try to argue, even if you have no time to do this)?
-- In our examples <img src="https://render.githubusercontent.com/render/math?math={N}"> > <img src="https://render.githubusercontent.com/render/math?math={f}">. What happens if <img src="https://render.githubusercontent.com/render/math?math={f}"> > 10 * <img src="https://render.githubusercontent.com/render/math?math={N}">? Can you design such a combination that keeps tau unchanged? What happens if you apply this combination of <img src="https://render.githubusercontent.com/render/math?math={f}"> and <img src="https://render.githubusercontent.com/render/math?math={N}">? Note that changing <img src="https://render.githubusercontent.com/render/math?math={N}"> implies changing theta.
+- In our examples $N$ > $f$. What happens if $f$ > 10 * $N$? Can you design such a combination that keeps tau unchanged? What happens if you apply this combination of $f$ and $N$? Note that changing $N$ implies changing theta.
 
 Again we ask you:
 

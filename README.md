@@ -28,7 +28,9 @@ Try to find/remember what the nondimensional parameter tau must be for trapping.
 
 You are used to working with Python, which is an interpreted programming language. This means that your instructions are not immediately understood by your computer, but are interpreted and translated to machine code on-the-fly as you execute a script. In contrast, Fortran is a compiled programming language. Before you run a program, your entire code needs to be translated to machine code first. This extra step allows your code to run incredibly efficiently whenever it is executed.
 
-To run the model on your machine, you will first need to compile it. This is also called *building* the model. The model should be able to build on **MacOS** and **Linux** with the Fortran compiler *gfortran* (part of the *GCC* compiler collection) installed. We have also tested the model on Gemini, the Science department’s computer cluster. If you are using MacOS, you may first need to install the Command Line Tools using `xcode-select --install`. Then, you can install _gfortran_ as part of _GCC_ using the package manager _[Homebrew](https://brew.sh)_ (after installing Homebrew, use `brew install gcc`). If you use **Windows**, you may install **Linux within Windows** (see [these instructions](https://docs.microsoft.com/en-us/windows/wsl/about)). If you are unable to build the model on your own computer, feel free to use the Gemini cluster. In that case, make sure to read the specific instructions below.
+To run the model, you will first need to compile it. This is also called *building* the model. For this assingment, we recommend to run the model on Gemini, the Science department's computer cluster. Make sure to read the specific instructions below.
+
+
 
 <details>
   <summary>⚠️ **Instructions for using the Gemini cluster [Click me]**</summary>
@@ -39,7 +41,12 @@ To run the model on your machine, you will first need to compile it. This is als
   3. Type your Solis-ID password.
   4. You're in! Your home directory is `/nethome/1234567`. It has a quotum of 2GB. If you need to temporarily store large amounts of data, create a personal scratch folder on the scratch disk: `mkdir /scratch/1234567`. Please do not store data on scratch folders for longer than 2 weeks.
 
-  ### Running Jupyter Lab on the cluster
+  ### Running the model on the cluster
+  1. You can download the files in this repository by first navigating to the directory where you want to store them (`cd /destination/path`) and running `git clone https://github.com/FrankaJes/trapping_internal_tides.git`
+  2. Navigate to the `model` directory: `cd trapping_internal_tides/model/`
+  3. Use the `make clean` command, and after that use the `make` command to build the model.
+  
+  ### Analysing data using Jupyter Lab on the cluster
   You can use Jupyter Lab on the cluster. This allows you to easily analyze the model output. 
   1. To do so, you must first load _Conda_: `module load miniconda/3`. Initialize Conda by typing `conda init bash`. You may need to open another bash-shell: type `bash`. You can tell that Conda is loaded when `(base)` is being shown in front of the interpreter.
   2. Start Jupyter: `jupyter lab --no-browser.`
@@ -49,17 +56,26 @@ To run the model on your machine, you will first need to compile it. This is als
   6. On your local machine, type `ssh -A -L YYYY:localhost:XXXX 1234567@gemini.science.uu.nl`
   7. Open a browser on your local computer and go to `localhost:YYYY`, where `YYYY` is your chosen portnumber. When asked for a password/token, use the one that you noted in step 2.
 
+  ### Analysing data on your local
+  Instead of analysing the data on the cluster, you can also download the data to your local machine and analyse it using your favourite programme. To download data to your local, you can follow these steps:
+  1. Open a Terminal.
+  2. Copy data from your Gemini directory to your local directory using: 
+  
 More info can be found here: https://github.com/OceanParcels/UtrechtTeam/wiki/How-to-run-parcels-on-lorenz,-gemini-and-cartesius#gemini
 
 </details>
 
+It is also possible to run the model on your local machine. The model should be able to build on **MacOS** and **Linux** with the Fortran compiler *gfortran* (part of the *GCC* compiler collection) installed. If you are using MacOS, you may first need to install the Command Line Tools using `xcode-select --install`. Then, you can install _gfortran_ as part of _GCC_ using the package manager _[Homebrew](https://brew.sh)_ (after installing Homebrew, use `brew install gcc`). If you use **Windows**, you may install **Linux within Windows** (see [these instructions](https://docs.microsoft.com/en-us/windows/wsl/about)).
 
+<details>
+  <summary>⚠️ **Instructions for using your local machine [Click me]**</summary>
+  
+  ### Running the model on your local machine
+  1. You can download the files in this repository by first navigating to the directory where you want to store them (`cd /destination/path`) and running `git clone https://github.com/FrankaJes/trapping_internal_tides.git`
+  2. Navigate to the `model` directory: `cd trapping_internal_tides/model/`
+  3. Use the `make clean` command, and after that use the `make` command to build the model.
 
-
-1. You can download the files in this repository by first navigating to the directory where you want to store them (`cd /destination/path`) and running `git clone https://github.com/FrankaJes/trapping_internal_tides.git`
-2. Navigate to the `model` directory: `cd trapping_internal_tides/model/`
-3. Use the `make clean` command, and after that use the `make` command to build the model.
-
+</details>
 
 
 ## Model components

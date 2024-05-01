@@ -117,7 +117,7 @@ In the analysis folder, you will find a `micom_tools.py` file, that contains a s
 
 In **tutorial 1** you will try to recover some of the figures in Drijfhout and Maas (2007). Start by setting up the model on Gemini or your local machine and run the model as it is (so you do not need to change the set-up). Analyse the output data using the provided scripts or create your own scripts to do so.
 
-In **tutorial 2** you will have to change the set-up to one of the other configurations discussed in Drijfhout and Maas (2007). Below are the places you will have to make changes in the code (although the code is in Fortran, the required changes are so simple that you can make them without detailed understanding of the code). Note that you need to recompile the program using `make`. ⚠️
+In **tutorial 2** you will have to change parameters to obtain one of the other configurations discussed in Drijfhout and Maas (2007). Below are the places you will have to make changes in the code (although the code is in Fortran, the required changes are so simple that you can make them without detailed understanding of the code). Note that you need to recompile the program using `make`. ⚠️
 
 - To change the bottom profile, in `cyclo.f` you must edit `pmer` (line 57) and `poos` (line 49) to define the bottom profile in respectively length and width.
 - To change $f$ you must edit `geopar.f` (line 22-23)

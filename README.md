@@ -1,6 +1,6 @@
 # Trapping of Internal Tides in a Channel Model
 
-Two tutorials of the Utrecht University course NS-MO447M Waves in Geophysical Fluids will be devoted to recovering and extending the result published in the paper
+Three tutorials of the Utrecht University course NS-MO447M Waves in Geophysical Fluids will be devoted to recovering and extending the result published in the paper
 
 > Drijfhout, S., & Maas, L. R. M. (2007). Impact of Channel Geometry and Rotation on the Trapping of Internal Tides. *Journal of Physical Oceanography*, *37*(11), 2740–2763. https://doi.org/10.1175/2007JPO3586.1
 
@@ -29,8 +29,6 @@ Try to find/remember what the nondimensional parameter tau must be for trapping.
 You are used to working with Python, which is an interpreted programming language. This means that your instructions are not immediately understood by your computer, but are interpreted and translated to machine code on-the-fly as you execute a script. In contrast, Fortran is a compiled programming language. Before you run a program, your entire code needs to be translated to machine code first. This extra step allows your code to run incredibly efficiently whenever it is executed.
 
 To run the model, you will first need to compile it. This is also called *building* the model. For this assingment, we recommend to run the model on Gemini, the Science department's computer cluster. It is also possible to run the model on your local machine. In any case, make sure to read the specific instructions below.
-
-
 
 <details>
   <summary>⚠️ **Instructions for using the Gemini cluster [Click me]**</summary>
@@ -117,23 +115,16 @@ In the analysis folder, you will find a `micom_tools.py` file, that contains a s
 
 ## Assignment
 
-In the first tutorial you will try to recover some of the figures in Drijfhout and Maas (2007) and possibly other figures from the same 4 runs. We ask you to
+In **tutorial 1** you will try to recover some of the figures in Drijfhout and Maas (2007). Start by setting up the model on Gemini or your local machine and run the model as it is (so you do not need to change the set-up). Analyse the output data using the provided scripts or create your own scripts to do so.
 
-- Motivate your choice of figures (choose 6-8).
-- Explain why you must adapt $N$ and total runtime when $f$ changes
-- Why do you see trapping of internal waves in the present set-up and not in other set-ups (different $f$ values and bottom profiles)?
-- What is the story you want to tell (see the first bullet) and what are your main conclusions?
-
- In tutorial 1 you do not need to change the set-up (but you may and can win extra brownie points if you do). In tutorial 2 you will have to change the set-up. Here are the places you will have to make changes in the code (although the code is in Fortran, the required changes are so simple that you can make them without detailed understanding of the code).
+In **tutorial 2** you will have to change the set-up to one of the other configurations discussed in Drijfhout and Maas (2007). Below are the places you will have to make changes in the code (although the code is in Fortran, the required changes are so simple that you can make them without detailed understanding of the code). Note that you need to recompile the program using `make`. ⚠️
 
 - To change the bottom profile, in `cyclo.f` you must edit `pmer` (line 57) and `poos` (line 49) to define the bottom profile in respectively length and width.
 - To change $f$ you must edit `geopar.f` (line 22-23)
 - To change $N$ you must edit `thetas`. The values in thetas represent the potential densities (assuming a linear equation of state, where density solely depends on potential temperature), and are determined as ( $\sigma_0-1000)/1000$. That means that $1000*\sigma_0$ runs from 26.0 till 28.071 $\rm{kg}/{m}^3$. 
 - To change the length of the run you must edit `micom.in`. The 5 values are explained in `micom_ssd.f` where `micom.in` is read on line 27. You can search for their names to understand what they steer. The first 2 values refer to `day1` and `day2` and the model runs from `day1` to `day2`.
 
-Note that you may need to recompile the program using `make`.
-
-In tutorial 2 we ask you to configure at least 1 of the 3 other set-ups discussed in Drijfhout and Maas (2007) (if you have already done so in practical 1 we ask you to choose a second one), and at least 1 configuration that was **NOT** discussed in Drijfhout and Maas (2007). You may think of the following options: 
+In **tutorial 3** we ask you to configure at least 1 configuration that was **NOT** discussed in Drijfhout and Maas (2007). You may think of the following options: 
 
 - What happens when you change the forcing frequency? Are the results invariant for this parameter? And what happens if you add the new and old frequency in the forcing? How linear is the response?
   You can change the forcing frequency in `boundpb.f` and `boundvb.f` on line 30 (`sin(tsec*2.*pi/(12.*3600.))`).
@@ -143,9 +134,11 @@ In tutorial 2 we ask you to configure at least 1 of the 3 other set-ups discusse
 - Maybe you want to change another parameter. Which one would you choose (try to argue, even if you have no time to do this)?
 - In our examples $N$ > $f$. What happens if $f$ > 10 * $N$? Can you design such a combination that keeps tau unchanged? What happens if you apply this combination of $f$ and $N$? Note that changing $N$ implies changing theta.
 
-Again we ask you:
+For the assignment, we ask you to hand in a report in which you
+- Motivate your choice of figures for three different simulations (choose 2-4 per simulation)
+- Write a clear interpretation of the figures
+- Explain why you must adapt $N$ and total runtime when $f$ changes
+- Explain why you see trapping of internal waves in the initial set-up (tutorial 1) and not in other set-ups (different $f$ values and bottom profiles)
+- Think about the story you want to tell (see the first bullet) and highlight the main conclusions
 
-- To motivate your choice of figures (choose 2-4) for each of the 2 runs with 1 parameter changed.
-- What is the story you want to tell (see bullet 1) and what are your main conclusions?
-
-The deadline for this assignment is **May 28th, 2024**.
+The report can be written in your usual groups and the deadline for this assignment is **May 28th, 2024**.

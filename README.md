@@ -28,7 +28,7 @@ Try to find/remember what the nondimensional parameter tau must be for trapping.
 
 You are used to working with Python, which is an interpreted programming language. This means that your instructions are not immediately understood by your computer, but are interpreted and translated to machine code on-the-fly as you execute a script. In contrast, Fortran is a compiled programming language. Before you run a program, your entire code needs to be translated to machine code first. This extra step allows your code to run incredibly efficiently whenever it is executed.
 
-To run the model, you will first need to compile it. This is also called *building* the model. For this assingment, we recommend to run the model on Gemini, the Science department's computer cluster. Make sure to read the specific instructions below.
+To run the model, you will first need to compile it. This is also called *building* the model. For this assingment, we recommend to run the model on Gemini, the Science department's computer cluster. It is also possible to run the model on your local machine. In any case, make sure to read the specific instructions below.
 
 
 
@@ -65,10 +65,9 @@ More info can be found here: https://github.com/OceanParcels/UtrechtTeam/wiki/Ho
 
 </details>
 
-It is also possible to run the model on your local machine. The model should be able to build on **MacOS** and **Linux** with the Fortran compiler *gfortran* (part of the *GCC* compiler collection) installed. If you are using MacOS, you may first need to install the Command Line Tools using `xcode-select --install`. Then, you can install _gfortran_ as part of _GCC_ using the package manager _[Homebrew](https://brew.sh)_ (after installing Homebrew, use `brew install gcc`). If you use **Windows**, you may install **Linux within Windows** (see [these instructions](https://docs.microsoft.com/en-us/windows/wsl/about)).
-
 <details>
   <summary>⚠️ **Instructions for using your local machine [Click me]**</summary>
+  The model should be able to build on **MacOS** and **Linux** with the Fortran compiler *gfortran* (part of the *GCC* compiler collection) installed. If you are using MacOS, you may first need to install the Command Line Tools using `xcode-select --install`. Then,   you can install _gfortran_ as part of _GCC_ using the package manager _[Homebrew](https://brew.sh)_ (after installing Homebrew, use `brew install gcc`). If you use **Windows**, you may install **Linux within Windows** (see [these instructions]        (https://docs.microsoft.com/en-us/windows/wsl/about)).
   
   ### Running the model on your local machine
   1. You can download the files in this repository by first navigating to the directory where you want to store them (`cd /destination/path`) and running `git clone https://github.com/FrankaJes/trapping_internal_tides.git`

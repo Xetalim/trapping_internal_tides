@@ -57,7 +57,7 @@ To run the model, you will first need to compile it. This is also called *buildi
   ### Analysing data on your local
   Instead of analysing the data on the cluster, you can also download the data to your local machine and analyse it using your favourite programme. To download data to your local, you can follow these steps:
   1. Open a Terminal.
-  2. Copy data from your Gemini directory to your local directory using: 
+  2. Copy data from your Gemini directory to your local directory using: `scp 1234567@gemini.science.uu.nl:/path_to_output_data /path_to_local_analysis_directory` using your Solis-ID in place of 1234567.
   
 More info can be found here: https://github.com/OceanParcels/UtrechtTeam/wiki/How-to-run-parcels-on-lorenz,-gemini-and-cartesius#gemini
 

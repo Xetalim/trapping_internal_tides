@@ -47,7 +47,7 @@ To run the model, you will first need to compile it. This is also called *buildi
   ### Analysing data using Jupyter Lab on the cluster
   You can use Jupyter Lab on the cluster. This allows you to easily analyze the model output. 
   1. To do so, you must first load _Conda_: `module load miniconda/3`. Initialize Conda by typing `conda init bash`. You may need to open another bash-shell: type `bash`. You can tell that Conda is loaded when `(base)` is being shown in front of the interpreter.
-  2. Start Jupyter: `jupyter lab --no-browser.`
+  2. Navigate to the `trapping_internal_tides` directory: `cd trapping_internal_tides/`, and start Jupyter: `jupyter lab --no-browser.`
   3. Take note of the Jupyter port number that has been assigned (the four digits in the X's in http://127.0.0.1:XXXX) and the token (the long string after `token=`).
   4. Open a new terminal window or tab on your local computer. In this terminal we set up an SSH tunnel.
   5. Pick a random number YYYY between 8000 and 9000. This will be our SSH port number for the tunnel. Try another number if something fails.

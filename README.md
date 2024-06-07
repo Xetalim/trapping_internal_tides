@@ -18,9 +18,9 @@ The model is configured as a channel with an open boundary at one, oceanward sid
 
 A barotropic tidal wave, having a typical period of 12 h, enters the channel from the open boundary. Over the continental slope its mainly horizontally-moving barotropic tidal current aquires a vertical component, as the flow is forced to follow the bottom. This vertical velocity displaces isopycnals up and downward out-of-equilibrium. The gravitational restoring force subsequently generates outward-propagating internal tides. 
 
-The paper discusses 4 experiments. In two experiments the earth’s rotation is neglected and the Coriolis frequency is set to 0. In the other two experiments we use an $f$ plane with $f = 10^{-4} \rm{s}^{-1}$. Both cases are run with two channel configurations: in one case the channel has a flat bottom and vertical walls in the cross-channel direction; in the other case the channel has a parabolic cross-channel bottom profile with maximum depth of 4300 m and sloping sidewalls. When $f=0$ the buoyancy frequency is chosen as $N = 3.05 \times 10^{-3}\ \rm{s}^{-1}$. When $f = 10^{-4}\ \rm{s}^{-1}$,  $N= 2.2 \times 10^{-3}\ \rm{s}^{-1}$. 
+The paper discusses 4 experiments. In two experiments the earth’s rotation is neglected and the Coriolis frequency is set to 0. In the other two experiments we use an $f$ plane with $f = 10^{-4} \rm{s}^{-1}$. Both cases are run with two channel configurations: in one case the channel has a flat bottom and vertical walls in the cross-channel direction; in the other case the channel has a parabolic cross-channel bottom profile with maximum depth of 4300 m and sloping sidewalls. When $f=0$ the buoyancy frequency is chosen as $N = 3.05 \times 10^{-3}\ \rm{rad } \text{ } \rm{s}^{-1}$. When $f = 10^{-4}\ \rm{s}^{-1}$,  $N= 2.2 \times 10^{-3}\ \rm{rad } \text{ } \rm{s}^{-1}$. 
 
-The model files in this repository are configured for the case $f = 10^{-4}\ \rm{s}^{-1}$, $N = 2.2 \times 10^{-3}\ \rm{s}^{-1}$. 
+The model files in this repository are configured for the case $f = 10^{-4}\ \rm{s}^{-1}$, $N = 2.2 \times 10^{-3}\ \rm{rad} \text{ } \rm{s}^{-1}$. 
 
 Try to find/remember what the nondimensional parameter tau must be for trapping. Is tau the same for the two combinations of $f$ and $N$ described above?
 

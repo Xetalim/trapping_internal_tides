@@ -8,7 +8,7 @@ Three tutorials of the Utrecht University course NS-MO447M Waves in Geophysical 
 
 You will do so using the simple ocean circulation model named “MICOM” (Miami Isopycnic Coordinate Ocean Model Output), written in Fortran, which is the main computer language for nearly all ocean, atmosphere, and climate models.
 
-This repository holds the model code and files that you can use for analysis. This README also contains the instructions for a small report that forms the fifth assignment of the course.
+This repository holds the model code and files that you can use for analysis. This README also contains the instructions for a small report that forms the fourth assignment of the course.
 
 
 

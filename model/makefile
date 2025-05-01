@@ -21,9 +21,8 @@ SRCS =	micom_ssd.f barotp.f blkdat.f cnuity.f cycl2.f \
         boundv.f boundpb.f boundub.f boundvb.f boundvv.f \
         extra_output.f cyclo.f vort1.f sshini.f \
         boundpne1.f
-
-
-CMD = micom1.x
+BUILDDIR=../run
+CMD=$(BUILDDIR)/micom1.x
 FC=gfortran
 LD=$(FC)
 # Portland Group pgf90 flags
@@ -32,7 +31,6 @@ LD=$(FC)
 FFLAGS= -g -O2 -fbounds-check -std=legacy -fdefault-real-8 -fdefault-double-8 -ffpe-trap=invalid,zero,overflow
 
 all: $(CMD)
-
 clean:
 	rm -f $(MICOM) $(OBJS)
 

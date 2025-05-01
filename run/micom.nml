@@ -1,0 +1,7 @@
+&micom_nml
+  day1   = 0,
+  day2   = 5,
+  trcrin = .false.,
+  trcout = .false.,
+  lpout  = .false.
+/

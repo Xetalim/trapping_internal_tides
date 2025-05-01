@@ -16,15 +16,20 @@ c
       integer nstep0,ni,no,ia,ib,ja,jb,ka,kb,itijd,
      .mo0,mo1,mo2,mo3,itime,iaa,jaa,ih
       real umax,umin,pmax,pmin,uabs,tstp,tsec
+      real start_time, current_time, elapsed, estimated_total, eta
+      integer total_steps
 c
       data nstep0,time0/0,0./
+
+      namelist /micom_nml/ day1, day2, trcrin, trcout, lpout
 c
       call init_block_data 
 
 c
       ih=ii/2
-      open(10, file='micom.in') 
-      read (10,*) day1,day2,trcrin,trcout,lpout
+
+      open(10, file='micom.nml')
+      read(10, nml=micom_nml)
       close(10)
       write (lp,101) thkdff,temdff,veldff,viscos,diapyc,vertmx
  101  format (' turb. flux parameters:',1p/
@@ -146,8 +151,8 @@ c     enddo
       vp1(j)=0.
       vp5(j)=0.
       enddo
-
-      DO itijd = 1, max(1, nstep2-nstep1) 
+      total_steps = max(1, nstep2-nstep1)
+      DO itijd = 1, total_steps
 c     do itijd=1,80
 c     do itijd=1,480
 c     do itime = 1,140
@@ -183,7 +188,15 @@ c
       ENDIF
 
       if(mod(itime,120).eq.0) then
-      print *, itime, 'itime'
+      call cpu_time(current_time)
+      elapsed = current_time - start_time
+      estimated_total = elapsed / (itime) * total_steps
+      eta = estimated_total - elapsed
+            print '(A,I4,A,I4,A,F6.2,A)',
+     &     "itime ", itime, "/", total_steps,
+     &     " | ETA: ", eta, " s"
+
+!     print *, itime, 'itime'
       endif
       call cnuity(m,mm,nn)
 c     print *, dp(1,240,30+nn),dp(52,240,30+nn), 'dp-cn'

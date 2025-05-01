@@ -40,7 +40,7 @@ To run the model, you will first need to compile it. This is also called *buildi
   4. You're in! Your home directory is `/nethome/1234567`. It has a quotum of 2GB. If you need to temporarily store large amounts of data, create a personal scratch folder on the scratch disk: `mkdir /scratch/1234567`. Please do not store data on scratch folders for longer than 2 weeks.
 
   ### Running the model on the cluster
-  1. You can download the files in this repository by first navigating to the directory where you want to store them (`cd /destination/path`) and running `git clone https://github.com/FrankaJes/trapping_internal_tides.git`
+  1. You can download the files in this repository by first navigating to the directory where you want to store them (`cd /destination/path`) and running `git clone https://github.com/Xetalim/trapping_internal_tides`
   2. Navigate to the `model` directory: `cd trapping_internal_tides/model/`
   3. Use the `make clean` command, and after that use the `make` command to build the model.
   
@@ -82,9 +82,10 @@ You will find the following files in the model directory:
 - `*.f` files. These are the source codes for the model. The main code is `micom-ssd.f`, and the other files serve as subroutines.
 - `makefile` that contains instructions for the compiler
 - `*.o` files that are created after compiling the code with the makefile
-- `micom1.x` file created after compiling the code with the makefile. This is the executable for running the model
 - `*.h` (3x) files where some variables are defined common to various subroutines and the main part
-- `micom.in` file setting a few free parameters.
+In the run directory you will find the following files:
+- `micom1.x` file created after compiling the code with the makefile. This is the executable for running the model
+- `micom.nml` file setting a few free parameters.
 - `thetas` file describing the densities of the 43 layers.
 
 
@@ -122,7 +123,7 @@ In **tutorial 2** you will have to change parameters to obtain one of the other 
 - To change the bottom profile, in `cyclo.f` you must edit `pmer` (line 57) and `poos` (line 49) to define the bottom profile in respectively length and width.
 - To change $f$ you must edit `geopar.f` (line 22-23)
 - To change $N$ you must edit `thetas`. The values in thetas represent the potential densities (assuming a linear equation of state, where density solely depends on potential temperature), and are determined as ( $\sigma_0-1000)/1000$. That means that $1000*\sigma_0$ runs from 26.0 till 28.071 $\rm{kg}/{m}^3$. 
-- To change the length of the run you must edit `micom.in`. The 5 values are explained in `micom_ssd.f` where `micom.in` is read on line 27. You can search for their names to understand what they steer. The first 2 values refer to `day1` and `day2` and the model runs from `day1` to `day2`.
+- To change the length of the run you must edit `micom.nml`. The 5 values are explained in `micom_ssd.f` where `micom.in` is read on line 27. You can search for their names to understand what they steer. The first 2 values refer to `day1` and `day2` and the model runs from `day1` to `day2`.
 
 In **tutorial 3** we ask you to configure at least 1 configuration that was **NOT** discussed in Drijfhout and Maas (2007). You may think of the following options: 
 

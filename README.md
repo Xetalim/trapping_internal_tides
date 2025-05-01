@@ -83,6 +83,7 @@ You will find the following files in the model directory:
 - `makefile` that contains instructions for the compiler
 - `*.o` files that are created after compiling the code with the makefile
 - `*.h` (3x) files where some variables are defined common to various subroutines and the main part
+
 In the run directory you will find the following files:
 - `micom1.x` file created after compiling the code with the makefile. This is the executable for running the model
 - `micom.nml` file setting a few free parameters.

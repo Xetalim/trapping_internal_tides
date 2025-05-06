@@ -34,7 +34,7 @@ To run the model, you will first need to compile it. This is also called *buildi
   <summary>⚠️ **Instructions for using the Gemini cluster [Click me]**</summary>
 
   ### Logging in
-  1. Open a Terminal.
+  1. Open a Terminal. 
   2. Connect to the Gemini cluster by typing `ssh 1234567@gemini.science.uu.nl` using your Solis-ID in place of 1234567.
   3. Type your Solis-ID password.
   4. You're in! Your home directory is `/nethome/1234567`. It has a quotum of 2GB. If you need to temporarily store large amounts of data, create a personal scratch folder on the scratch disk: `mkdir /scratch/1234567`. Please do not store data on scratch folders for longer than 2 weeks.
@@ -53,13 +53,14 @@ To run the model, you will first need to compile it. This is also called *buildi
   5. Pick a random number YYYY between 8000 and 9000. This will be our SSH port number for the tunnel. Try another number if something fails.
   6. On your local machine, type `ssh -A -L YYYY:localhost:XXXX 1234567@gemini.science.uu.nl`
   7. Open a browser on your local computer and go to `localhost:YYYY`, where `YYYY` is your chosen portnumber. When asked for a password/token, use the one that you noted in step 2.
+  8. These steps above sometimes fail when using MobaXTerm on windows, if that happens, try to use the normal command line (cmd).
 
   ### Analysing data on your local
   Instead of analysing the data on the cluster, you can also download the data to your local machine and analyse it using your favourite programme. To download data to your local, you can follow these steps:
   1. Open a Terminal.
   2. Copy data from your Gemini directory to your local directory using: `scp 1234567@gemini.science.uu.nl:/path_to_output_data /path_to_local_analysis_directory` using your Solis-ID in place of 1234567.
   
-More info can be found here: https://github.com/OceanParcels/UtrechtTeam/wiki/How-to-run-parcels-on-lorenz,-gemini-and-cartesius#gemini
+More info can be found here: https://github.com/OceanParcels/UtrechtTeam/wiki/How-to-run-parcels-on-lorenz-or-gemini
 
 </details>
 
@@ -93,7 +94,7 @@ In the run directory you will find the following files:
 
 ## Running the model
 
-With the command `./micom1.x`, the model starts running.
+With the command `./micom1.x` found in the `run` folder, the model starts running.
 
 Three types of output files will be created;
 
@@ -124,7 +125,7 @@ In **tutorial 2** you will have to change parameters to obtain one of the other 
 - To change the bottom profile, in `cyclo.f` you must edit `pmer` (line 57) and `poos` (line 49) to define the bottom profile in respectively length and width.
 - To change $f$ you must edit `geopar.f` (line 22-23)
 - To change $N$ you must edit `thetas`. The values in thetas represent the potential densities (assuming a linear equation of state, where density solely depends on potential temperature), and are determined as ( $\sigma_0-1000)/1000$. That means that $1000*\sigma_0$ runs from 26.0 till 28.071 $\rm{kg}/{m}^3$. 
-- To change the length of the run you must edit `micom.nml`. The 5 values are explained in `micom_ssd.f` where `micom.in` is read on line 27. You can search for their names to understand what they steer. The first 2 values refer to `day1` and `day2` and the model runs from `day1` to `day2`.
+- To change the length of the run you must edit `micom.nml`. The 5 values are explained in `micom_ssd.f` where `micom.nml` is read on line 27. You can search for their names to understand what they steer. The first 2 values refer to `day1` and `day2` and the model runs from `day1` to `day2`.
 
 In **tutorial 3** we ask you to configure at least 1 configuration that was **NOT** discussed in Drijfhout and Maas (2007). You may think of the following options: 
 
